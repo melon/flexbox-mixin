@@ -1,0 +1,119 @@
+/*  Flexbox Less Mixin  */
+/* inspired from https://github.com/annebosman/FlexboxLess/blob/master/mixins-flexbox.less and other resources */
+
+.display-flex() {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.flex(@value) {                       /* none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] */
+    -webkit-box-flex: @value;
+    -webkit-flex: @value;
+    -ms-flex: @value;
+    flex: @value;
+}
+
+.flex-wrap(@wrap) {                   /* nowrap | wrap | wrap-reverse */
+    -ms-flex-wrap: @wrap;
+    -webkit-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+
+.flex-direction(@direction) {         /* row | row-reverse | column | column-reverse */
+    -ms-flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.justify-content(@justify) {           /* flex-start | flex-end | center | space-between | space-around */
+    -webkit-box-pack: @justify;
+    -webkit-justify-content: @justify;
+    -ms-justify-content: @justify;
+    justify-content: @justify
+}
+
+.align-items(@align-item) {           /* flex-start | flex-end | center | baseline | stretch  */
+    -webkit-box-align: @align-item;
+    -webkit-align-items: @align-item;
+    -ms-flex-align: @align-item;
+    -ms-align-items: @align-item;
+    align-items: @align-item;
+}
+
+.align-content(@align-content) {      /* flex-start | flex-end | center | space-between | space-around | stretch */
+    -webkit-align-content: @align-content;
+    -ms-align-content: @align-content;
+    align-content: @align-content;
+}
+
+.align-self(@align-self) {            /* auto | flex-start | flex-end | center | baseline | stretch */
+    -webkit-align-self: @align-self;
+    -ms-align-self: @align-self;
+    align-self: @align-self;
+}
+
+.order(@order) {                      /* <number> */
+    -webkit-box-ordinal-group: @order;
+    -ms-flex-order: @order;
+    -webkit-order: @order;
+    order: @order;
+}
+
+/* Old webkit fixes for android until at least 4.2 */
+.flex-direction(@direction) when (@direction = column) {
+    -webkit-box-orient: vertical;
+}
+.flex-direction(@direction) when (@direction = row) {
+    -webkit-box-orient: horizontal;
+}
+.flex-wrap(@wrap) when (@wrap = nowrap) {
+    -webkit-box-lines: single;
+}
+.flex-wrap(@wrap) when (@wrap = wrap) {
+    -webkit-box-lines: multiple;
+}
+
+
+/* fixes especially for IE10 */
+.flex-wrap(@wrap) when (@wrap = nowrap) {
+    -ms-flex-wrap: none;
+}
+.justify-content(@justify) when (@justify = flex-start) {
+    -ms-flex-pack: start;
+}
+.justify-content(@justify) when (@justify = flex-end) {
+    -ms-flex-pack: end;
+}
+.justify-content(@justify) when (@justify = space-between) {
+    -ms-flex-pack: justify;
+}
+.justify-content(@justify) when (@justify = space-between) {
+    -ms-flex-pack: distribute;
+}
+.align-items(@align-item) when (@align-item = flex-start) {
+    -ms-flex-align: start;
+}
+.align-items(@align-item) when (@align-item = flex-end) {
+    -ms-flex-align: end;
+}
+.align-items(@align-item) when (@align-item = stretch) {
+    -ms-flex-align: stretch;
+}
+.align-content(@align-content) when (@align-content = flex-start) {
+    -ms-flex-line-pack: start;
+}
+.align-content(@align-content) when (@align-content = flex-end) {
+    -ms-flex-line-pack: end;
+}
+.align-content(@align-content) when (@align-content = stretch) {
+    -ms-flex-line-pack: stretch;
+}
+.align-self(@align-self) when (@align-self = flex-start) {
+    -ms-flex-item-align: start;
+}
+.align-self(@align-self) when (@align-self = flex-end) {
+    -ms-flex-item-align: end;
+}

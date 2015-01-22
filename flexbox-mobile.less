@@ -1,0 +1,67 @@
+/*  Flexbox Less Mixin for mobile  */
+/* Note: quirk IE10 would not be surpproted */
+
+.display-flex() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex(@value) {
+    -webkit-box-flex: @value;
+    -webkit-flex: @value;
+    flex: @value;
+}
+
+.flex-wrap(@wrap) {
+    -webkit-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+
+.flex-direction(@direction) {
+    -webkit-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.justify-content(@justify) {
+    -webkit-box-pack: @justify;
+    -webkit-justify-content: @justify;
+    justify-content: @justify
+}
+
+.align-items(@align-item) {
+    -webkit-box-align: @align-item;
+    -webkit-align-items: @align-item;
+    align-items: @align-item;
+}
+
+.align-content(@align-content) {
+    -webkit-align-content: @align-content;
+    align-content: @align-content;
+}
+
+.align-self(@align-self) {
+    -webkit-align-self: @align-self;
+    align-self: @align-self;
+}
+
+.order(@order) {
+    -webkit-box-ordinal-group: @order;
+    -webkit-order: @order;
+    order: @order;
+}
+
+/* Old webkit fixes for android until at least 4.2 */
+.flex-direction(@direction) when (@direction = column) {
+    -webkit-box-orient: vertical;
+}
+.flex-direction(@direction) when (@direction = row) {
+    -webkit-box-orient: horizontal;
+}
+.flex-wrap(@wrap) when (@wrap = nowrap) {
+    -webkit-box-lines: single;
+}
+.flex-wrap(@wrap) when (@wrap = wrap) {
+    -webkit-box-lines: multiple;
+}
